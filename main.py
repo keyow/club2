@@ -8,7 +8,6 @@ from colors import AuxFG, colorize, get_color_for
 from banner import DISPLAY_SERVER_BANNER_B
 
 
-
 msg_queue = asyncio.Queue()
 writers: set[asyncio.StreamWriter] = set()
 taken_usernames = set()
