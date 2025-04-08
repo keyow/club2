@@ -43,6 +43,6 @@ Focuse on the second window and connect to the *receive server*:
 nc <IP> 31338
 ```
 
-You are ready to go! Now you are allowed to type and send messages in the second window.
+Now you are allowed to type and send messages in the second window. You can see all messages in the first window.
 
 > Notice that you need to press Enter twice to send the message. This feature allows users to send multiline messages.
