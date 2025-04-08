@@ -32,7 +32,7 @@ After a successful launch, make sure both display and receive servers are access
 
 After the CLUB2 is hosted by you or someone else, you are ready to connect. We assume that you are using `nc`, but some other clients are also suitable, so it is for you to choose.
 
-It is important to note that two separate terminals for two servers are used for connection, respectively. Therefore, it is convenient to use `tmux`, `terminator' or analogues.
+It is important to note that two separate terminals for two servers are used for connection, respectively. Therefore, it is convenient to use `tmux`, `terminator` or analogues.
 
 Focuse on the first window and connect to the *display server*:
 ```
