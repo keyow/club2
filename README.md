@@ -1,5 +1,7 @@
 # CLUB2
 
+![alt display_preview](image.png)
+
 **CLUB2** - a simple CLI-chat. Consists of two servers:  
 1. *Display server* - here all the messages from all users are displayed.
 2. *Receive server* - receives user messages.

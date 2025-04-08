@@ -10,7 +10,7 @@ from banner import DISPLAY_SERVER_BANNER_B
 
 
 msg_queue = asyncio.Queue()
-writers: dict[tuple, asyncio.StreamWriter] = {}
+writers: set[asyncio.StreamWriter] = set()
 taken_usernames = set()
 
 
@@ -42,6 +42,8 @@ def writer_autoclose(func):
         except Exception as _:
             print_exc()
         await close(writer)
+        if writer in writers:
+            writers.remove(writer)
     return wrapper
 
 
@@ -55,16 +57,14 @@ async def display_server_cb(
     # Show banner first        
     await write(writer, DISPLAY_SERVER_BANNER_B)
 
-    # Register addr:writer pair
-    addr = writer.get_extra_info('peername')
-    writers[addr] = writer
+    # Register writer
+    writers.add(writer)
     
     # Wait until disconnected
     while True:
         data = await reader.read(1)
         if not data:
             return
-
 
 @writer_autoclose
 async def receive_server_cb(
@@ -141,7 +141,7 @@ async def main():
         while True:
             data = await msg_queue.get()
             await asyncio.gather(
-                *[write(writers[addr], data, ignore_exc=True) for addr in writers]
+                *[write(writer, data, ignore_exc=True) for writer in writers]
             )
                 
 
